@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8" />
-    <title th:text="${title}">Title</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
 <h1 th:text="${title}">Default Title</h1>
 
+<nav th:replace="fragments :: navigation"></nav>
+
 <form method="post">
-    <input type="text" name="cheeseName" />
+    <label for="name-field">Name</label>
+    <input id="name-field" type="text" name="cheeseName" />
+    <br />
+    <label for="desc-field">Description</label>
+    <input id="desc-field" type="text" name="cheeseDescription" />
+    <br />
     <input type="submit" value="Add Cheese" />
 </form>
 

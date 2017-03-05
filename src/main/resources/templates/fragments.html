@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">My Cheeses</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+</head>
+<body>
+
+<nav th:fragment="navigation">
+    <a href="/cheese">List</a>
+    <a href="/cheese/add">Add</a>
+    <a href="/cheese/remove">Remove</a>
+</nav>
+
+</body>
+</html>
