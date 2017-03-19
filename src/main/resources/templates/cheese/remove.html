@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container body-content">
+<body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
@@ -10,8 +10,8 @@
 <form method="post">
 
     <div th:each="cheese : ${cheeses}" class="checkbox">
-        <input type="checkbox" name="cheese" th:value="${cheese}" th:id="${cheese}"/>
-        <label th:for="${cheese}" th:text="${cheese}"></label>
+        <input type="checkbox" name="cheese" th:value="${cheese.name}" th:id="${cheese.name}"/>
+        <label th:for="${cheese.name}" th:text="${cheese.name}"></label>
         <br />
     </div>
 

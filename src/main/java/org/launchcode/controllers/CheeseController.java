@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.launchcode.models.Cheese;
+
 /**
  * Created by LaunchCode
  */
@@ -17,7 +19,7 @@ import java.util.Map;
 @RequestMapping("cheese")
 public class CheeseController {
 
-    static HashMap<String, String> cheeses = new HashMap<>();
+    static ArrayList<Cheese> cheeses = new ArrayList<>();
 
     // Request path: /cheese
     @RequestMapping(value = "")
@@ -38,13 +40,14 @@ public class CheeseController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@RequestParam String cheeseName,
         @RequestParam String cheeseDescription) {
-        cheeses.put(cheeseName, cheeseDescription);
+        Cheese newCheese = new Cheese(cheeseName, cheeseDescription);
+        cheeses.add(newCheese);
         return "redirect:";
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveCheeseForm(Model model) {
-        model.addAttribute("cheeses", cheeses.keySet());
+        model.addAttribute("cheeses", cheeses);
         model.addAttribute("title", "Remove Cheese");
         return "cheese/remove";
     }
