@@ -4,12 +4,7 @@ import org.launchcode.models.Cheese;
 import org.launchcode.models.CheeseData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by LaunchCode
@@ -17,6 +12,36 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
+
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable("cheeseId") int cheeseId) {
+        Cheese cheese = CheeseData.getById(cheeseId);
+        model.addAttribute("title", "Edit Cheese");
+        model.addAttribute("cheese", cheese);
+        return "cheese/edit";
+    }
+
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.POST)
+    public String processEditForm(Model model, @PathVariable("cheeseId") int cheeseId,
+                                  @RequestParam("name") String name, @RequestParam("description") String description) {
+        // Find cheese to edit
+        Cheese cheese = CheeseData.getById(cheeseId);
+
+        // Checks for valid name input
+        if ((null == name) || name.equals("")) {
+            model.addAttribute("title", "Edit Cheese");
+            model.addAttribute("error", "You should actually provide a name");
+            model.addAttribute("cheese", cheese);
+            return "cheese/edit";
+        } else {
+            // Otherwise, update object and redirect to index
+            cheese.setName(name);
+            cheese.setDescription(description);
+            model.addAttribute("title", "My Cheeses");
+            model.addAttribute("message", "Cheese updated");
+            return "redirect:..";
+        }
+    }
 
     // Request path: /cheese
     @RequestMapping(value = "")
