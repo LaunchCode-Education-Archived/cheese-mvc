@@ -16,11 +16,13 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th></th>
     </tr>
 
     <tr th:each="cheese : ${cheeses}">
         <td th:text="${cheese.name}"></td>
         <td th:text="${cheese.description}"></td>
+        <td><a th:href="@{'/cheese/edit/' + ${cheese.cheeseId}}">edit</a></td>
     </tr>
 
 </table>
