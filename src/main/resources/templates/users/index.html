@@ -8,6 +8,10 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
+<div th:if="${newUser}" class="alert alert-success">
+    <p th:text="${'Welcome ' + newUser + ', your account has been created.'}"></p>
+</div>
+
 <table class="table">
 
     <tr>
