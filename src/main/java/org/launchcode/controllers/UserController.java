@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Andrew Bell on 3/22/17.
@@ -22,10 +23,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(Model model, @ModelAttribute User user, String verify){
+    public String add(Model model, @ModelAttribute User user, @RequestParam String verify){
         if(verify.equals(user.getPassword())){
             model.addAttribute("title", "Add User");
             model.addAttribute("newUser", user.getUsername());
+            model.addAttribute(user);
             UserData.add(user);
             return "users/index";
         } else {
