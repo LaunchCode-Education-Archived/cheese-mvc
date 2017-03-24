@@ -1,12 +1,21 @@
 package org.launchcode.models;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by LaunchCode
  */
 public class Cheese {
 
+    @NotNull
+    @Size(min=3, max=15)
     private String name;
+
+    @NotNull
+    @Size(min=1, message = "Description must not be empty")
     private String description;
+
     private int cheeseId;
     private static int nextId = 1;
 
