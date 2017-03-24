@@ -2,6 +2,7 @@ package org.launchcode.controllers;
 
 import org.launchcode.models.Cheese;
 import org.launchcode.models.CheeseData;
+import org.launchcode.models.CheeseType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -34,6 +35,7 @@ public class CheeseController {
     public String displayAddCheeseForm(Model model) {
         model.addAttribute("title", "Add Cheese");
         model.addAttribute(new Cheese());
+        model.addAttribute("cheeseTypes", CheeseType.values());
         return "cheese/add";
     }
 
