@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<div th:if="${newUser}" class="alert alert-success">
+    <p th:text="${'Welcome ' + newUser + ', your account has been created.'}"></p>
+</div>
+
+<table class="table">
+
+    <tr>
+        <th>Username</th>
+        <th>email</th>
+    </tr>
+
+    <tr>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
