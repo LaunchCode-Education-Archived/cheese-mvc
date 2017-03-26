@@ -1,12 +1,24 @@
 package org.launchcode.models;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by LaunchCode
  */
 public class User {
 
+    @NotNull
+    @Size(min= 5, max= 15)
     private String username;
+
+    @Email(message = "Invalid email address")
     private String email;
+
+    @NotNull
+    @Size(min=5, message = "Password must be at least 5 characters long")
     private String password;
 
     public User(String username, String email, String password) {
