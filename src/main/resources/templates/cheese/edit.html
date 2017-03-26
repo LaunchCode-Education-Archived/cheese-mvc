@@ -12,17 +12,25 @@
 <div class="alert alert-danger" role="alert" th:if="${error}"
      th:text="${error}"></div>
 
-<form method="post" style="max-width:600px;">
+<form method="post" style="max-width:600px;" th:object="${cheese}">
     <div class="form-group">
-        <label for="name-field">Name</label>
-        <input class="form-control" id="name-field"
-               type="text" name="name" th:value="${cheese.name}" />
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="*{name}" />
     </div>
     <div class="form-group">
-        <label for="desc-field">Description</label>
-        <input class="form-control" id="desc-field"
-               type="text" name="description" th:value="${cheese.description}"/>
+        <label th:for="description">Description</label>
+        <input class="form-control" th:field="*{description}"/>
     </div>
+
+    <div class="form-group">
+        <label th:for = "type">Type</label>
+        <select th:field="*{type}">
+            <option th:each="cheeseType : ${cheeseTypes}"
+                    th:text="${cheeseType.name}"
+                    th:value="${cheeseType}"></option>
+        </select>
+    </div>
+
     <input type="hidden" value="${cheese.cheeseId}" name="cheeseId" />
     <input type="submit" value="Add Cheese" />
 </form>
