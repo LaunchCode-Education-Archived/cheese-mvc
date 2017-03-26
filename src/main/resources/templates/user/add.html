@@ -23,9 +23,9 @@
         <div class="error" th:errors="*{password}"></div>
     </div>
     <div class="form-group">
-        <label th:for="verify">Verify</label>
-        <input class="form-control" name="verify" id="verify" type="password" />
-        <div class="error" th:text="${verifyError}"></div>
+        <label th:for="verifyPassword">Verify</label>
+        <input class="form-control" th:field="*{verifyPassword}" type="password" />
+        <div class="error" th:errors="*{verifyPassword}"></div>
     </div>
 
     <input type="submit" value="Register" />

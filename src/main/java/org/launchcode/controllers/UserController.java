@@ -26,18 +26,11 @@ public class UserController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String add(Model model, @ModelAttribute @Valid User user,
-                      Errors errors, String verify) {
+                      Errors errors) {
 
         model.addAttribute(user);
-        boolean passwordsMatch = true;
-        if (user.getPassword() == null || verify == null
-                || !user.getPassword().equals(verify)) {
-            passwordsMatch = false;
-            user.setPassword("");
-            model.addAttribute("verifyError", "Passwords must match");
-        }
 
-        if (!errors.hasErrors() && passwordsMatch) {
+        if (!errors.hasErrors()) {
             return "user/index";
         }
 
