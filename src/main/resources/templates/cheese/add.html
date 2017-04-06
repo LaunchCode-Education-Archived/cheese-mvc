@@ -20,10 +20,10 @@
 
     <div class="form-group">
         <label th:for="type">Type</label>
-        <select th:field="*{type}">
-            <option th:each="cheeseType : ${cheeseTypes}"
-                    th:text="${cheeseType.name}"
-                    th:value="${cheeseType}"></option>
+        <select name="categoryId">
+            <option th:each="category : ${categories}"
+                    th:text="${category.name}"
+                    th:value="${category.id}"></option>
         </select>
     </div>
 

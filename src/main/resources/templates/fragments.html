@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <title th:text="${title}">My Cheeses</title>
 
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -13,7 +14,8 @@
 <nav th:fragment="navigation">
     <a href="/cheese">List</a> |
     <a href="/cheese/add">Add</a> |
-    <a href="/cheese/remove">Remove</a>
+    <a href="/cheese/remove">Remove</a> |
+    <a href="/category">Categories</a>
 </nav>
 
 </body>
