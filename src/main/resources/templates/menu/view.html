@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h1 th:text="${title}">Default Title</h1>
+<h1 th:text="${menu.name}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
 <ul>
-    <li th:each="cheese : ${cheeses}" th:text="${cheese.name}"></li>
+    <li th:each="cheese : ${menu.cheeses}" th:text="${cheese.name}"></li>
 </ul>
 
-<p th:unless="${cheeses.size()}"><i>No cheeses yet</i></p>
+<p th:unless="${menu.cheeses.size()}"><i>No cheeses yet</i></p>
 
-<p><a th:href="'/menu/add-item/' + ${menuId}">Add Cheese</a></p>
+<p><a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a></p>
 
 </body>
 </html>
