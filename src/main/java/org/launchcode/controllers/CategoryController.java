@@ -21,10 +21,10 @@ import javax.validation.Valid;
 public class CategoryController {
 
     @Autowired
-    CategoryDao categoryDao;
+    private CategoryDao categoryDao;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String index(Model model, @RequestParam(defaultValue = "0") int id) {
+    public String index(Model model) {
         model.addAttribute("title", "Categories");
         model.addAttribute("categories", categoryDao.findAll());
         return "category/index";
