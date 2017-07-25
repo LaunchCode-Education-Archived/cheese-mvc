@@ -18,13 +18,7 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping(value = "menu")
-public class MenuController {
-
-    @Autowired
-    MenuDao menuDao;
-
-    @Autowired
-    CheeseDao cheeseDao;
+public class MenuController extends AbstractController {
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -51,7 +45,7 @@ public class MenuController {
 
         menuDao.save(menu);
 
-        return "redirect:view/" + menu.getId();
+        return "redirect:view/" + menu.getUid();
     }
 
     @RequestMapping(value = "view/{menuId}", method = RequestMethod.GET)
@@ -91,7 +85,7 @@ public class MenuController {
         theMenu.addItem(theCheese);
         menuDao.save(theMenu);
 
-        return "redirect:/menu/view/" + theMenu.getId();
+        return "redirect:/menu/view/" + theMenu.getUid();
     }
 
 }

@@ -11,11 +11,30 @@
 </head>
 <body>
 
-<nav th:fragment="navigation">
-    <a href="/cheese">Home</a> |
-    <a href="/category">Categories</a> |
-    <a href="/menu">Menus</a>
-</nav>
+<div th:fragment="navigation">
+
+    <div th:if="${userId}">
+
+        <nav class="user-nav">
+            <a href="/logout">Log Out</a>
+        </nav>
+
+        <nav>
+            <a href="/cheese">Home</a> |
+            <a href="/category">Categories</a> |
+            <a href="/menu">Menus</a>
+        </nav>
+
+    </div>
+
+    <div th:unless="${userId}">
+        <nav>
+            <a href="/login">Log In</a> |
+            <a href="/register">Register</a>
+        </nav>
+    </div>
+
+</div>
 
 </body>
 </html>

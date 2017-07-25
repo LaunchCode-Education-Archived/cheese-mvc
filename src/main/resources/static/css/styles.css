@@ -5,3 +5,7 @@ body {
 nav {
     margin-bottom: 20px;
 }
+
+.user-nav {
+    float: right;
+}

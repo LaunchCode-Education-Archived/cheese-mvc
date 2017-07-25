@@ -12,11 +12,7 @@ import java.util.List;
  * Created by LaunchCode
  */
 @Entity
-public class Menu {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Menu extends AbstractEntity {
 
     @NotNull
     @Size(min=3, max=15)
@@ -29,10 +25,6 @@ public class Menu {
 
     public void addItem(Cheese item) {
         cheeses.add(item);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {

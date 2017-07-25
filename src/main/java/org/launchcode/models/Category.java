@@ -10,28 +10,20 @@ import java.util.List;
  * Created by LaunchCode
  */
 @Entity
-public class Category {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Category extends AbstractEntity {
 
     @NotNull
     @Size(min=3, max=15)
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_uid")
     private List<Cheese> cheeses = new ArrayList<>();
 
     public Category() {}
 
     public Category(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {

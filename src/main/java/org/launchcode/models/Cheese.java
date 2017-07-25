@@ -9,11 +9,10 @@ import java.util.List;
  * Created by LaunchCode
  */
 @Entity
-public class Cheese {
+public class Cheese extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private int id;
+    @ManyToOne
+    private User owner;
 
     @NotNull
     @Size(min=3, max=15)
@@ -35,10 +34,6 @@ public class Cheese {
     }
 
     public Cheese() { }
-
-    public int getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -62,5 +57,13 @@ public class Cheese {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
