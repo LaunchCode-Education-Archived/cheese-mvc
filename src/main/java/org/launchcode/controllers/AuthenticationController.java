@@ -64,6 +64,11 @@ public class AuthenticationController extends AbstractController {
         User theUser = userDao.findByUsername(form.getUsername());
         String password = form.getPassword();
 
+        if (theUser == null) {
+            errors.rejectValue("username", "user.invalid", "The given username does not exist");
+            return "login";
+        }
+
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
             return "login";

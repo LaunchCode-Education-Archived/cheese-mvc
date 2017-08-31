@@ -31,7 +31,6 @@ public abstract class AbstractController {
     public static final String userSessionKey = "user_id";
 
     protected User getUserFromSession(HttpSession session) {
-
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         return userId == null ? null : userDao.findOne(userId);
     }
